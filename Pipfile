@@ -6,13 +6,10 @@ name = "pypi"
 [packages]
 requests = "*"
 jupyter = "*"
-ipykernel = "*"
-pillow = "*"
-tk = "*"
-pandas = "*"
 peewee = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.10"
