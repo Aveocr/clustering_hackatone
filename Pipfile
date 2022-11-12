@@ -12,10 +12,11 @@ matplotlib = "*"
 pandas = "*"
 streamlit = "*"
 seaborn = "*"
-sklearn = "*"
 plotly = "*"
 openpyxl = "*"
 streamlit-option-menu = "*"
+sklearn = "*"
+scikit-learn = "*"
 
 [dev-packages]
 tqdm = "*"
