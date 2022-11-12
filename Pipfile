@@ -4,12 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
-jupyter = "*"
-peewee = "*"
+numpy = "*"
+matplotlib = "*"
+pandas = "*"
+streamlit = "*"
+seaborn = "*"
+sklearn = "*"
+plotly = "*"
+openpyxl = "*"
 
 [dev-packages]
-ipykernel = "*"
+tqdm = "*"
 
 [requires]
 python_version = "3.10"
