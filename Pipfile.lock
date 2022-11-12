@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c0184f50af425438c9b8ca6407f45ba82540b6ecade3ceeef0f21b3f4fc4ff50"
+            "sha256": "7a78ee7c0229793d01764cb1b8595772ae64891fc966ac1d13d09b0dda6cadb3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -1377,6 +1377,14 @@
             ],
             "index": "pypi",
             "version": "==1.14.1"
+        },
+        "streamlit-option-menu": {
+            "hashes": [
+                "sha256:0b7eae3ffdb0276c81d15750465c72957d57d2f766cb027c586d053519731178",
+                "sha256:69d1aef6f30f83f29eda3dc9667733bc2e28cd640eb17b4b6ca315f633484c52"
+            ],
+            "index": "pypi",
+            "version": "==0.3.2"
         },
         "tenacity": {
             "hashes": [
