@@ -1,8 +1,13 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 
+from views.view import render as render_view
+from views.model import render as render_model
+from views.docs import render as render_docs
+
+
 selected = option_menu(menu_title=None,
-    options=["view", "model", "documentation"],
+    options=["View", "Model", "Documentation"],
     orientation="horizontal",
     icons=['cloud-upload', 'gear', 'list-task'],
     styles={
@@ -18,3 +23,12 @@ selected = option_menu(menu_title=None,
         "nav-link-selected": { "background-color": "blue" },
     }
 )
+
+
+match selected:
+    case 'View':
+        render_view()
+    case 'Model':
+        render_model()
+    case 'Documentation':
+        render_docs()
