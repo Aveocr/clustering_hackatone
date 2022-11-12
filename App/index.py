@@ -41,7 +41,3 @@ st.line_chart(f(np.arange(0.5, 100, 0.5)))
 st.code(code, language='python')
 
 st.line_chart(f(np.arange(0.5, 100, 0.5)))
-
-
-
-
