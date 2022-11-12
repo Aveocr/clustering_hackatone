@@ -2,6 +2,7 @@ import json
 from urllib.parse import urljoin
 from dataclasses import dataclass
 from datetime import datetime
+from time import sleep
 
 from requests.exceptions import RequestException, JSONDecodeError
 import requests
@@ -49,28 +50,33 @@ def search_data(query: str) -> list[SearchResult]:
 
     search_url = urljoin(BASE_URL, SEARCH_PATH + token)
     
-    try:
-        res = requests.get(search_url)
-    except RequestException as e:
-        raise ParseError(query, f'Request error: {e}')
-    
-    try:
-        j = res.json()
-    except JSONDecodeError as e:
-        raise ParseError(query, f'JSON parse error: {e}')
-    
-    try:
-        results = []
-        for data in j['rows']:
-            if 'r' not in data:
-                continue
-            
-            results.append(SearchResult(
-                ip_start_date=datetime.strptime(data['r'], '%d.%m.%Y'),
-                ip_end_date=datetime.strptime(data['e'], '%d.%m.%Y') \
-                    if 'e' in data else None
-            ))
+    while True:
+        try:
+            res = requests.get(search_url)
+        except RequestException as e:
+            raise ParseError(query, f'Request error: {e}')
+        
+        try:
+            j = res.json()
+        except JSONDecodeError as e:
+            raise ParseError(query, f'JSON parse error: {e}')
 
-        return results
-    except (ValueError, KeyError):
-        raise ParseError(query, f'Unable to parse JSON: {json.dumps(j, indent=4)}')
+        if 'status' in j and j['status'] == 'wait':
+            sleep(2)
+            continue
+        
+        try:
+            results = []
+            for data in j['rows']:
+                if 'r' not in data:
+                    continue
+                
+                results.append(SearchResult(
+                    ip_start_date=datetime.strptime(data['r'], '%d.%m.%Y'),
+                    ip_end_date=datetime.strptime(data['e'], '%d.%m.%Y') \
+                        if 'e' in data else None
+                ))
+
+            return results
+        except (ValueError, KeyError):
+            raise ParseError(query, f'Unable to parse JSON: {json.dumps(j, indent=4)}')
