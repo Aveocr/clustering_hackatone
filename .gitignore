@@ -175,4 +175,4 @@ cython_debug/
 # App database
 app.db
 # Output files
-*.csv
+csv/
