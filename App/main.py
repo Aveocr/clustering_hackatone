@@ -6,13 +6,11 @@ from views.model import render as render_model
 from views.docs import render as render_docs
 
 
-APP_TITLE = 'Определение доходности ИП через кластеризацию'
-
-st.set_page_config(page_title=APP_TITLE)
-st.title(APP_TITLE)
+st.set_page_config(page_title='Определение доходности ИП через кластеризацию')
+st.title('Определение доходности ИП через кластеризацию')
 
 selected = option_menu(menu_title=None,
-    options=["View", "Model", "Documentation"],
+    options=["View", "Documentation"],
     orientation="horizontal",
     icons=['cloud-upload', 'gear', 'list-task'],
     styles={
